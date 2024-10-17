@@ -1,3 +1,8 @@
+package org.example.Models;
+
+import java.time.LocalDate;
+import java.util.Objects;
+
 /**
  * Represents a customer making a reservation.
  */

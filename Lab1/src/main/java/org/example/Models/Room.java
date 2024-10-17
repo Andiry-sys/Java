@@ -1,3 +1,7 @@
+package org.example.Models;
+
+import java.util.Objects;
+
 public class Room {
     private String type;
     private int bedCount;
