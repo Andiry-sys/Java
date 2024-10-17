@@ -18,6 +18,46 @@ public class Reservation {
         this.isPaid = builder.isPaid;
     }
 
+    public Room getRoom() {
+        return room;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public boolean isPaid() {
+        return isPaid;
+    }
+
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "room=" + room +
+                ", customer=" + customer +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", isPaid=" + isPaid +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Reservation that = (Reservation) o;
+        return isPaid == that.isPaid &&
+                room.equals(that.room) &&
+                customer.equals(that.customer) &&
+                startDate.equals(that.startDate) &&
+                endDate.equals(that.endDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(room, customer, startDate, endDate, isPaid);
+    }
+
     public static class Builder {
         private Room room;
         private Customer customer;
@@ -55,31 +95,5 @@ public class Reservation {
         }
     }
 
-    @Override
-    public String toString() {
-        return "Reservation{" +
-                "room=" + room +
-                ", customer=" + customer +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
-                ", isPaid=" + isPaid +
-                '}';
-    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Reservation that = (Reservation) o;
-        return isPaid == that.isPaid &&
-                room.equals(that.room) &&
-                customer.equals(that.customer) &&
-                startDate.equals(that.startDate) &&
-                endDate.equals(that.endDate);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(room, customer, startDate, endDate, isPaid);
-    }
 }
