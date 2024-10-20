@@ -1,5 +1,8 @@
 package org.example.Models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -9,13 +12,20 @@ import java.util.Objects;
 public class Customer {
     private String lastName;
     private String firstName;
-    private String documentId;
+    private String idDocument;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate birthDate;
 
-    public Customer(String lastName, String firstName, String documentId, LocalDate birthDate) {
+    public Customer() {
+    }
+
+    public Customer(  String lastName,
+                      String firstName,
+                     String documentId,
+                      LocalDate birthDate) {
         this.lastName = lastName;
         this.firstName = firstName;
-        this.documentId = documentId;
+        this.idDocument = documentId;
         this.birthDate = birthDate;
     }
 
@@ -29,6 +39,14 @@ public class Customer {
         return firstName;
     }
 
+    public String getIdDocument() {
+        return idDocument;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -36,13 +54,13 @@ public class Customer {
         Customer customer = (Customer) o;
         return lastName.equals(customer.lastName) &&
                 firstName.equals(customer.firstName) &&
-                documentId.equals(customer.documentId) &&
+                idDocument.equals(customer.idDocument) &&
                 birthDate.equals(customer.birthDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(lastName, firstName, documentId, birthDate);
+        return Objects.hash(lastName, firstName, idDocument, birthDate);
     }
 
     @Override
@@ -50,7 +68,7 @@ public class Customer {
         return "Customer{" +
                 "lastName='" + lastName + '\'' +
                 ", firstName='" + firstName + '\'' +
-                ", documentId='" + documentId + '\'' +
+                ", documentId='" + idDocument + '\'' +
                 ", birthDate=" + birthDate +
                 '}';
     }
