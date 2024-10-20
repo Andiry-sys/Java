@@ -17,6 +17,18 @@ public class Room implements Comparable<Room>{
 
     // Getters and setters
 
+    public String getType() {
+        return type;
+    }
+
+    public int getBedCount() {
+        return bedCount;
+    }
+
+    public int getRoomNumber() {
+        return roomNumber;
+    }
+
     @Override
     public int compareTo(Room other) {
         return Integer.compare(this.roomNumber, other.roomNumber);
@@ -46,13 +58,5 @@ public class Room implements Comparable<Room>{
     @Override
     public int hashCode() {
         return Objects.hash(type, bedCount, roomNumber, amenities);
-    }
-
-    public int getBedCount() {
-        return bedCount;
-    }
-
-    public int getRoomNumber() {
-        return roomNumber;
     }
 }

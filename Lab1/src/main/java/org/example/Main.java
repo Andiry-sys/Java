@@ -3,6 +3,7 @@ package org.example;
 import org.example.Models.Customer;
 import org.example.Models.Reservation;
 import org.example.Models.Room;
+import org.example.builder.Builder;
 import org.example.service.ReservationService;
 
 import java.time.LocalDate;
@@ -18,7 +19,7 @@ public class Main {
         Customer customer1 = new Customer("Doe", "John", "ID123456", LocalDate.of(1990, 5, 15));
         Customer customer2 = new Customer("Smith", "Jane", "ID654321", LocalDate.of(1985, 10, 20));
 
-        Reservation reservation1 = new Reservation.Builder()
+        Reservation reservation1 = new Builder()
                 .room(room1)
                 .customer(customer1)
                 .startDate(LocalDate.of(2024, 10, 20))
@@ -26,7 +27,7 @@ public class Main {
                 .isPaid(true)
                 .build();
 
-        Reservation reservation2 = new Reservation.Builder()
+        Reservation reservation2 = new Builder()
                 .room(room2)
                 .customer(customer2)
                 .startDate(LocalDate.of(2024, 11, 1))
@@ -34,7 +35,7 @@ public class Main {
                 .isPaid(false)
                 .build();
 
-        Reservation reservation3 = new Reservation.Builder()
+        Reservation reservation3 = new Builder()
                 .room(room3)
                 .customer(customer1)
                 .startDate(LocalDate.of(2024, 12, 15))

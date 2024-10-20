@@ -19,16 +19,14 @@ public class Customer {
         this.birthDate = birthDate;
     }
 
-    // Getters and setters
+    // Getters
 
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "lastName='" + lastName + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", documentId='" + documentId + '\'' +
-                ", birthDate=" + birthDate +
-                '}';
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
     }
 
     @Override
@@ -45,5 +43,15 @@ public class Customer {
     @Override
     public int hashCode() {
         return Objects.hash(lastName, firstName, documentId, birthDate);
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", documentId='" + documentId + '\'' +
+                ", birthDate=" + birthDate +
+                '}';
     }
 }

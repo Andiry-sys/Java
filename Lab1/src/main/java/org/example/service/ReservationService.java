@@ -4,8 +4,10 @@ import org.example.Models.Customer;
 import  org.example.Models.Reservation;
 import org.example.Models.Room;
 
+import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class ReservationService {
@@ -45,5 +47,33 @@ public class ReservationService {
         return reservations.stream()
                 .filter(Reservation::isPaid)
                 .collect(Collectors.toList());
+    }
+
+    /**
+     * Counts total number of reservations for a specific room type.
+     *
+     * @param reservations List of all reservations.
+     * @param roomType The type of room to filter reservations.
+     * @return Total count of reservations for the given room type.
+     */
+    public long countReservationsByRoomType(List<Reservation> reservations, String roomType) {
+        return reservations.stream()
+                .filter(reservation -> reservation.getRoom().getType().equalsIgnoreCase(roomType))
+                .count();
+    }
+
+    /**
+     * Gets a list of customers who made reservations within a specific date range.
+     *
+     * @param reservations List of all reservations.
+     * @param startDate Start date of the range.
+     * @param endDate End date of the range.
+     * @return Set of customers who made reservations within the date range.
+     */
+    public Set<Customer> getCustomersWithReservationsInDateRange(List<Reservation> reservations, LocalDate startDate, LocalDate endDate) {
+        return reservations.stream()
+                .filter(reservation -> !reservation.getStartDate().isBefore(startDate) && !reservation.getEndDate().isAfter(endDate))
+                .map(Reservation::getCustomer)
+                .collect(Collectors.toSet());
     }
 }
