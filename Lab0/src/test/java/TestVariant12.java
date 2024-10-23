@@ -26,4 +26,61 @@ public class TestVariant12 {
         assertFalse(variant.areAllPositive(0, 1, 2));
         assertTrue(variant.areAllPositive(10, 20, 30));
     }
+
+    @Test
+    public void testIfTask() {
+        Variant12 variant = new Variant12();
+
+        assertEquals(5, variant.ifTask(5, 3));
+        assertEquals(10, variant.ifTask(7, 10));
+        assertEquals(0, variant.ifTask(0, -1));
+    }
+
+    @Test
+    public void testSwitchTask() {
+        Variant12 variant = new Variant12();
+
+        assertEquals(1.0, variant.switchTask(1, 10.0));
+        assertEquals(10000.0, variant.switchTask(2, 10.0));
+        assertEquals(10.0, variant.switchTask(3, 10.0));
+        assertEquals(0.01, variant.switchTask(4, 10.0));
+        assertEquals(0.1, variant.switchTask(5, 10.0));
+    }
+
+    @Test
+    public void testForTask() {
+        Variant12 variant = new Variant12();
+
+        double[] expected = {10.0, 12.0, 14.0, 16.0, 18.0, 20.0};
+        assertArrayEquals(expected, variant.forTask(10.0));
+    }
+
+    @Test
+    public void testWhileTask() {
+        Variant12 variant = new Variant12();
+
+        assertEquals(15.0, variant.whileTask(5));
+        assertEquals(105.0, variant.whileTask(7));
+    }
+
+    @Test
+    public void testArrayTask() {
+        Variant12 variant = new Variant12();
+
+        int[] expected = {1, 2, 3, 6, 12};
+        assertArrayEquals(expected, variant.arrayTask(5, 1, 2));
+    }
+
+    @Test
+    public void testTwoDimensionArrayTask() {
+        Variant12 variant = new Variant12();
+
+        int[] arr = {1, 2, 3};
+        int[][] expected = {
+                {1, 2, 3},
+                {2, 4, 6},
+                {4, 8, 12}
+        };
+        assertArrayEquals(expected, variant.twoDimensionArrayTask(3, 3, 2, arr));
+    }
 }
