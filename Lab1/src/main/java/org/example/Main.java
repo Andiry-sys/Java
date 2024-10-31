@@ -4,6 +4,7 @@ import org.example.Models.Customer;
 import org.example.Models.Reservation;
 import org.example.Models.Room;
 import org.example.builder.Builder;
+import org.example.builder.CustomerBuilder;
 import org.example.serializer.JsonSerializer;
 import org.example.serializer.XmlSerializer;
 import org.example.serializer.YamlSerializer;
@@ -105,5 +106,21 @@ public class Main {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        System.out.println("------------------Lab 4 --------------------");
+
+        try {
+            Customer customerWithBuilder = new CustomerBuilder()
+                    .lastName("Doe")
+                    .firstName("John")
+                    .documentType("Passport123")
+                    .birthDate(LocalDate.of(1980, 5, 15))
+                    .build();
+
+            System.out.println("Customer created successfully: " + customerWithBuilder);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Validation failed with errors:");
+            System.out.println(e.getMessage());
+        }
+
     }
     }
